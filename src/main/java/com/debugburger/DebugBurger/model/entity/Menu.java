@@ -9,9 +9,13 @@ public class Menu {
     private List<Item> items = new ArrayList<>();
 
     public List<Item> getItems() {
-
-        //TODO LISTAR ITENS
+        //TODO PARAMETRO OPCIONAL
         return items;
+    }
+
+    public void insertItems(Item item){
+
+        items.add(item);
     }
 
 

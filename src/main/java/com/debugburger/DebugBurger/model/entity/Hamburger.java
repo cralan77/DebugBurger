@@ -18,6 +18,18 @@ public class Hamburger extends Item{
 
     private int additionalItemQuantity;
 
+    public void setIngredients(Ingredient ingredient) {
+        ingredients.add(ingredient);
+    }
+
+    public int getAdditionalItemQuantity() {
+        return additionalItemQuantity;
+    }
+
+    public void setAdditionalItemQuantity(int additionalItemQuantity) {
+        this.additionalItemQuantity = additionalItemQuantity;
+    }
+
     public Long getIdHamburger() {
         return idHamburger;
     }
