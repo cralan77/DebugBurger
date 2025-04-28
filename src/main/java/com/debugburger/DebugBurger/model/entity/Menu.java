@@ -18,5 +18,14 @@ public class Menu {
         items.add(item);
     }
 
+    public void removeItem(Item item){
+
+        for(Item i: items){
+            if(i.getName().equals(item.getName())){
+                items.remove(i);
+            }
+
+        }
+    }
 
 }

@@ -1,8 +1,6 @@
 package com.debugburger.DebugBurger.service.Impl;
 
-import com.debugburger.DebugBurger.model.entity.Category;
-import com.debugburger.DebugBurger.model.entity.Hamburger;
-import com.debugburger.DebugBurger.model.entity.Ingredient;
+import com.debugburger.DebugBurger.model.entity.*;
 import com.debugburger.DebugBurger.model.repository.HamburgerRepository;
 import com.debugburger.DebugBurger.service.ItemService;
 import org.jetbrains.annotations.NotNull;
@@ -17,10 +15,11 @@ public class HamburgerServiceImpl implements ItemService {
     HamburgerRepository hamburgerRepository;
 
     @Override
-    public void insertItem(@NotNull Hamburger hamburger) {
+    public void insertItem(@NotNull Item hamburger) {
+
 
         if(hamburger.getCategory()== Category.PRATO){
-            hamburgerRepository.save(hamburger);
+            hamburgerRepository.save((Hamburger) hamburger);
         }
         else{
             //TODO THROW
@@ -30,9 +29,9 @@ public class HamburgerServiceImpl implements ItemService {
     }
 
     @Override
-    public void removeItem(@NotNull Hamburger hamburger) {
+    public void removeItem(@NotNull Item hamburger) {
         if(hamburger.getCategory()== Category.PRATO){
-            hamburgerRepository.delete(hamburger);
+            hamburgerRepository.delete((Hamburger)hamburger);
         }
         else{
             //TODO THROW
@@ -46,7 +45,7 @@ public class HamburgerServiceImpl implements ItemService {
         //TODO THROW
     }
 
-    public void additionalItem(@NotNull Hamburger hamburger, Ingredient ingredient){
+    public void additionalItem(@NotNull Hamburger hamburger, AdditionalIngredient additionalIngredient){
 
         int count=0;
         for(Ingredient ing : hamburger.getIngredients()){
@@ -57,7 +56,7 @@ public class HamburgerServiceImpl implements ItemService {
         }
 
         if(hamburger.getAdditionalItemQuantity() < count){
-            hamburger.setIngredients(ingredient);
+            hamburger.addAdditionalIngredient(additionalIngredient);
             hamburgerRepository.save(hamburger);
         }
 

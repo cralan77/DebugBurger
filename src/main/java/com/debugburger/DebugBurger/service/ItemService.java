@@ -1,11 +1,10 @@
 package com.debugburger.DebugBurger.service;
 
-import com.debugburger.DebugBurger.model.entity.Hamburger;
-
+import com.debugburger.DebugBurger.model.entity.Item;
 
 import java.util.List;
 
-public interface ItemService<Obj extends Hamburger, Ingredient, Product> {
+public interface ItemService<Obj extends Item> {
 
     void insertItem(Obj item);
 

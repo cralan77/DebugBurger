@@ -12,6 +12,7 @@ public class Hamburger extends Item{
     @Column(name = "id_hamburger", nullable = false)
     private Long idHamburger;
 
+    private List<AdditionalIngredient> additionalIngredients = new ArrayList<>();
 
     private List<Ingredient> ingredients = new ArrayList<>();
 
@@ -43,9 +44,15 @@ public class Hamburger extends Item{
         return ingredients;
     }
 
+    public List<AdditionalIngredient> getAdditionalIngredients() {
+        return additionalIngredients;
+    }
+
+
+
     private int momentaryQuantityAdditional (){
         int momentaryQuantityAdditional=0;
-        for(Ingredient i: this.ingredients){
+        for(AdditionalIngredient i: this.additionalIngredients){
             if(i.getCategory().equals(Category.ADICIONAL)){
                 momentaryQuantityAdditional++;
             }
@@ -54,11 +61,11 @@ public class Hamburger extends Item{
         return momentaryQuantityAdditional;
     }
 
-    public void addIngredient(Ingredient ingredient) {
+    public void addAdditionalIngredient(AdditionalIngredient additionalIngredient) {
 
         if(momentaryQuantityAdditional() < additionalItemQuantity){
-            this.ingredients.add(ingredient);
-            super.value += ingredient.getValue();
+            this.additionalIngredients.add(additionalIngredient);
+            super.value += additionalIngredient.getValue();
         }else{
             // TODO: throw BUSINESS EXCEPTION
         }
@@ -67,10 +74,10 @@ public class Hamburger extends Item{
 
     }
 
-    public void removeIngredient(Ingredient ingredient){
+    public void removeAdditionalIngredient(AdditionalIngredient additionalIngredient){
 
-        this.ingredients.removeIf(i -> i.getName().equals(ingredient.getName()));
-        super.value -= ingredient.getValue();
+        this.additionalIngredients.removeIf(i -> i.getName().equals(additionalIngredient.getName()));
+        super.value -= additionalIngredient.getValue();
 
     }
 
