@@ -6,9 +6,11 @@ import com.debugburger.DebugBurger.model.entity.Item;
 import com.debugburger.DebugBurger.model.repository.IngredientRepository;
 import com.debugburger.DebugBurger.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class IngredientServiceImpl implements ItemService {
 
     @Autowired

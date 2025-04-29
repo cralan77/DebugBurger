@@ -8,15 +8,15 @@ import java.util.List;
 
 public interface OrderService {
 
-    Order initOrder();
+    Order initOrder(Order order);
 
-    Order insertItem(Long id, Item item);
+    Order insertItem(Order order, Item item);
 
-    Order deleteItem(Long id, Item item);
+    Order deleteItem(Order order, Item item);
 
-    Order viewOrder(Order order);
+    String viewOrder(Order order);
 
-    Order finishOrder(Long id);
+    Order finishOrder(Order order);
 
     List<Order> viewAllOrders();
 

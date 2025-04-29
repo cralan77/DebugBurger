@@ -26,10 +26,21 @@ public class Order {
         return items;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void addItem(Item item) {
+        this.items.add(item);
+
     }
 
+    public void deleteItem(Item item){
+
+        for (Item i : items){
+
+            if(i.getName().equals(item.getName())){
+                items.remove(i);
+            }
+        }
+
+    }
     public Status getStatus() {
         return status;
     }
@@ -48,5 +59,17 @@ public class Order {
 
     public void setIdOrder(Long idOrder) {
         this.idOrder = idOrder;
+    }
+
+
+    //TODO toString Order
+    @Override
+    public String toString() {
+        return "Order{" +
+                "idOrder=" + idOrder +
+                ", items=" + items +
+                ", status=" + status +
+                ", totalValue=" + totalValue +
+                '}';
     }
 }
